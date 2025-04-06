@@ -1,0 +1,14 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contaner{
+    width: var(--default-layout-width);
+    display: flex;
+}
+
+.content{
+    flex: 1;
+}

@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    // ko có biến thì lấy 60px còn có thì lấy giá trị của biến
+    height: var(--default-layout-header-height, 60px);
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+}
+
+.inner {
+    width: var(--default-layout-width);
+    height: 100%;
+}
