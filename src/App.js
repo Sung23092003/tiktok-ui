@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes, privateRoutes } from '~/routes';
+import { publicRoutes } from '~/routes';
 import {DefaultLayout} from '~/components/Layout';
 // dùng để chứa react component
 import { Fragment } from 'react';
