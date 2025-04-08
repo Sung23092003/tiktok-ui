@@ -1,5 +1,6 @@
 .wrapper {
     --search-height: 46px;
+    --search-width: 361px;
     --search-btn-width: 46px;
 
     display: flex;
@@ -21,7 +22,7 @@
 .search {
     position: relative;
     display: flex;
-    width: 361px;
+    width: var(--search-width);
     height: var(--search-height);
     background-color: rgba(22, 24, 35, 0.06);
     border-radius: 92px;
@@ -63,6 +64,18 @@
     }
 }
 
+//tippy
+.search-result{
+    width: var(--search-width);
+}
+
+.search-title{
+padding: 5px 12px;
+    font-style: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
+
 .clear,
 .loading {
     position: absolute;
@@ -88,5 +101,5 @@
     }
 }
 
-.actions {
-}
+// .actions {
+// }
