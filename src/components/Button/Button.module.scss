@@ -1,0 +1,72 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 8.5px 16px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--white);
+    border: 1px solid transparent;
+    &:hover {
+        opacity: 0.6;
+    }
+    // Nếu có một phần tử .wrapper đứng ngay sau một phần tử .wrapper khác thì phần tử thứ hai sẽ có
+    + .wrapper {
+        margin-left: 8px;
+    }
+
+    // độ ưu tiên cao nhất trong button type
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        // pointer-events: none;
+    }
+}
+
+// icon bên trái và phải
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+// button types
+// thằng này có độ ưu tiên thấp nhất trong button types vì đứng đầu
+.rounded {
+    // mẹo để số lớn là nó sẽ đẹp
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    border-color: rgba(22, 24, 35, 0.12);
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.outline {
+    color: var(--primary);
+    border-color: currentColor;
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// button size
+.small {
+    min-width: 88px;
+    padding: 5px 16px;
+}
+
+.large {
+    min-width: 140px;
+    padding: 14px 16px;
+}
