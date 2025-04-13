@@ -34,6 +34,13 @@
     margin-left: 8px;
 }
 
+.icon{
+    display: inline-block;
+    // đặt width để tiltle có sử dụng icon ngang hàng nhau
+    width: 24px;
+    text-align: center;
+}
+
 // button types
 // thằng này có độ ưu tiên thấp nhất trong button types vì đứng đầu
 .rounded {

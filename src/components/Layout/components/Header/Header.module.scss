@@ -43,7 +43,7 @@
     }
 
     // khi input chứa gì đó bên trong(chữ)
-    input:not(:placeholder-shown) ~ .search-btn{
+    input:not(:placeholder-shown) ~ .search-btn {
         color: #000;
     }
 
@@ -65,12 +65,12 @@
 }
 
 //tippy
-.search-result{
+.search-result {
     width: var(--search-width);
 }
 
-.search-title{
-padding: 5px 12px;
+.search-title {
+    padding: 5px 12px;
     font-style: 1.4rem;
     font-weight: 600;
     color: rgba(22, 24, 35, 0.5);
@@ -96,10 +96,14 @@ padding: 5px 12px;
         background-color: rgba(22, 24, 35, 0.03);
         cursor: pointer;
     }
-    &:active{
+    &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
 
-// .actions {
-// }
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    background-color: transparent;
+    padding: 4px 8px;
+}
