@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faSearch, faEllipsisVertical, faEarthAsia, faCircleQuestion, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faSpinner,
+    faSearch,
+    faEllipsisVertical,
+    faEarthAsia,
+    faCircleQuestion,
+    faKeyboard,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
 import Button from '~/components/Button';
@@ -16,19 +24,83 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'Tiếng Việt',
+        children: {
+            title: 'Ngôn ngữ',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English', // United States, Canada, Australia, etc.
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt', // Vietnam
+                },
+                {
+                    type: 'language',
+                    code: 'fi',
+                    title: 'Suomi', // Finland
+                },
+                {
+                    type: 'language',
+                    code: 'no',
+                    title: 'Norsk', // Norway
+                },
+                {
+                    type: 'language',
+                    code: 'se',
+                    title: 'Svenska', // Sweden
+                },
+                {
+                    type: 'language',
+                    code: 'dk',
+                    title: 'Dansk', // Denmark
+                },
+                {
+                    type: 'language',
+                    code: 'ch',
+                    title: 'Schweizerdeutsch', // Switzerland (Swiss German)
+                },
+                {
+                    type: 'language',
+                    code: 'nl',
+                    title: 'Nederlands', // Netherlands
+                },
+                {
+                    type: 'language',
+                    code: 'nht',
+                    title: 'Ngoài hành tinh',
+                    children: {
+                        data: [
+                            {
+                                type: 'language',
+                                code: 'en',
+                                title: 'SumBaShomo',
+                            },
+                            {
+                                type: 'language',
+                                code: 'vi',
+                                title: 'Namex',
+                            },
+                        ],
+                    },
+                },
+            ],
+        },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Đánh giá và trợ giúp',
-        to : '/feeback'
+        to: '/feeback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard}/>,
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
         title: 'Phím tắt',
-    }
-]
+    },
+];
 
 const Header = () => {
     const [searchResult, setsearchResult] = useState([]);
@@ -37,7 +109,19 @@ const Header = () => {
         setTimeout(() => {
             setsearchResult([]);
         }, 0);
-    },[]);
+    }, []);
+
+    //hanle Logic
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
+        switch (menuItem.type) {
+            case 'language':
+                // thực hiện logic
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -81,9 +165,7 @@ const Header = () => {
                     {/* target ="_blank": mở tab mới */}
                     <Button text>Upload</Button>
                     <Button primary>Login</Button>
-                    <Menu
-                    items = {MENU_ITEMS}
-                    >
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         {/* button ... */}
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
