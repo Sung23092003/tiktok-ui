@@ -15,9 +15,15 @@
     justify-content: flex-start;
     border-radius: 0;
     line-height: 1.8rem;
+    font-weight: 600;
+
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
+}
+
+.menu-list :global(.menu-item.separate) {
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
 }
 
 // header
@@ -39,5 +45,5 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
