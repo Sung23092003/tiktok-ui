@@ -108,6 +108,27 @@
     align-items: center;
 }
 
+.message-icon{
+    position: relative;
+}
+
+.message-icon::before {
+    content: '13';
+    position: absolute;
+    top: -4px;
+    right: 1px;
+    color: var(--white);
+    background-color: red;
+    padding: 4px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.4rem;
+}
+
+.share-icon {
+    margin-bottom: 4px;
+}
+
 .more-btn {
     font-size: 2rem;
     margin-left: 28px;
@@ -124,7 +145,7 @@
     cursor: pointer;
 }
 
-.user-avatar{
+.user-avatar {
     border-radius: 50%;
     border: 2px solid #000;
     width: 32px;

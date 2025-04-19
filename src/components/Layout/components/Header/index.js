@@ -9,8 +9,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
-    faMessage,
     faUser,
     faCoins,
     faGear,
@@ -20,12 +18,14 @@ import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
+import Image from '~/components/image';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import { MessageIcon, ShareIcon, UploadIcon } from '~/components/icons';
 
 // giúp ta viết được class có chứa dấu -
 const cx = classNames.bind(styles);
@@ -203,12 +203,18 @@ const Header = () => {
                         <>
                             <Tippy delay={[0, 200]} offset={[16, 8]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
+                            <Tippy delay={[0, 200]} content="Share" placement="bottom">
+                                <button className={cx('action-btn', 'share-icon')}>
+                                    <ShareIcon />
+                                </button>
+                            </Tippy>
+
                             <Tippy delay={[0, 200]} content="Text Message" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                <button className={cx('action-btn', 'message-icon')}>
+                                    <MessageIcon width='3.2rem' height='3.2rem'/>
                                 </button>
                             </Tippy>
                         </>
@@ -221,7 +227,7 @@ const Header = () => {
                     )}
                     <Menu items={currenUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currenUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://image-cdn.solana.fm/images/?imageUrl=https://gateway.irys.xyz/adf5uwHkAxM7gGel_t-tmtDRmdLoaOMmx6PZQg6w38Q"
                                 alt="Nguyễn Văn A"
