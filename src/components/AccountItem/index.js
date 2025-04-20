@@ -2,12 +2,14 @@ import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import Image from '~/components/image'
+
 
 const cx = classNames.bind(styles);
 
 const AccountItem = () => {
     return <div className={cx('wrapper')}>
-        <img className={cx('avatar')} src= 'https://placehold.co/600x400' alt='avatar'/>
+        <Image className={cx('avatar')} src= 'https://placehold.co/600x400' alt='avatar'/>
         <div className={cx('info')}>
             <h4 className={cx('name')}>
                 <span>Nguyễn Văn A</span>
