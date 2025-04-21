@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { faCircleXmark, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -12,17 +12,34 @@ const Search = () => {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setsearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
-
     useEffect(() => {
-        setTimeout(() => {
-            setsearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+        // loại bỏ khoảng trắng và ktr nếu searchValue ko có giá trị thì return
+        if (!searchValue.trim()) {
+            setsearchResult([]);
+            return;
+        }
+
+        setLoading(true);
+        // Khi người dùng nhập các ký tự đặc biệt như `&`,'=', `?` có thể khiến URL bị hiểu sai,
+        // hàm encodeURIComponent sẽ mã hóa chúng thành các ký tự an toàn để sử dụng trong URL
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setsearchResult(res.data);
+                    setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Fetch error:', error);
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     const handleClear = () => {
         setSearchValue('');
+        setsearchResult([]);
         inputRef.current.focus();
     };
 
@@ -38,9 +55,9 @@ const Search = () => {
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>
                             Accounts
-                            <AccountItem />
-                            <AccountItem />
-                            <AccountItem />
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
                         </h4>
                     </PopperWrapper>
                 </div>
@@ -55,15 +72,15 @@ const Search = () => {
                     placeholder="Search accounts and videos"
                     spellCheck={false}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    onFocus={()=>setShowResult(true)}
+                    onFocus={() => setShowResult(true)}
                 />
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
 
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faSearch} />

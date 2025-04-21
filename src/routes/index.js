@@ -13,7 +13,7 @@ const publicRoutes = [
     // các layout mặc định
     {path: '/', component: Home},
     {path: '/following', component: Following},
-    {path: '/profile', component: Profile,},
+    {path: '/:nickname', component: Profile,},
     // các layout ko phải mặc định
     {path: '/upload', component: Upload, layout: HederOnlyLayout},
     {path: '/search', component: Search, layout: null},
