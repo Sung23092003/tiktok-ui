@@ -20,6 +20,11 @@
     padding: 0 var(--default-layout-horizontal-spacer);
 }
 
+// logo
+.logo-link{
+    display: flex;
+}
+
 // actions
 .actions {
     display: flex;

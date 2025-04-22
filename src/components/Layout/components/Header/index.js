@@ -10,9 +10,11 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+import routesConfig from '~/config/routes';
 import Image from '~/components/image';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
@@ -105,8 +107,6 @@ const MENU_ITEMS = [
 ];
 
 const Header = () => {
-
-
     const currenUser = true;
 
     //hanle Logic
@@ -152,7 +152,9 @@ const Header = () => {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* Logo */}
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
 
                 {/* search */}
                 <Search />

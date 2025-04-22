@@ -27,15 +27,14 @@ const Search = () => {
             return;
         }
 
-        const fetchApi = async ()=>{
-
+        const fetchApi = async () => {
             setLoading(true);
 
             const result = await searchServices.search(debounced);
             setSearchResult(result);
 
             setLoading(false);
-        }
+        };
 
         fetchApi();
 
@@ -52,6 +51,15 @@ const Search = () => {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
+    const handleChangle = (e) => {
+        const searchValue = e.target.value;
+        // không cho nhập space(khoảng trắng đầu tiên)
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    }
+    
     return (
         <HeadlessTippy
             interactive
@@ -77,7 +85,7 @@ const Search = () => {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChangle}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -88,7 +96,7 @@ const Search = () => {
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e)=>e.preventDefault()}>
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>

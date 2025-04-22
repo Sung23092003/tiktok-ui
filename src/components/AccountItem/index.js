@@ -1,3 +1,4 @@
+import routesConfig from '~/config/routes';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const AccountItem = ({ data }) => {
     return (
-        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+        <Link to={routesConfig.profile} className={cx('wrapper')}>
             <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
