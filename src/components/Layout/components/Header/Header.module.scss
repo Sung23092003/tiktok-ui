@@ -3,12 +3,17 @@
     --search-width: 361px;
     --search-btn-width: 46px;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
     display: flex;
-    width: 100%;
     justify-content: center;
-    // ko có biến thì lấy 60px còn có thì lấy giá trị của biến
+    width: 100%;
     height: var(--default-layout-header-height, 60px);
+    // ko có biến thì lấy 60px còn có thì lấy giá trị của biến
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    background-color: var(--white);
 }
 
 .inner {
