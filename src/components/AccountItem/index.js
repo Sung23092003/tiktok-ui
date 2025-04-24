@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import config from '~/config';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
@@ -22,5 +23,9 @@ const AccountItem = ({ data }) => {
         </Link>
     );
 };
+
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+}
 
 export default AccountItem;

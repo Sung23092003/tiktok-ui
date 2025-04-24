@@ -76,8 +76,8 @@ const MENU_ITEMS = [
                 {
                     type: 'language',
                     code: 'nht',
-                    title: 'Ngoài hành tinh',
                     children: {
+                        title: 'Ngoài hành tinh',
                         data: [
                             {
                                 type: 'language',
@@ -155,10 +155,8 @@ const Header = () => {
                 <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>
-
                 {/* search */}
                 <Search />
-
                 {/* actions */}
                 <div className={cx('actions')}>
                     {currenUser ? (

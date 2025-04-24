@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
@@ -10,7 +11,7 @@ const Button = ({
     primary = false,
     outline = false,
     text = false,
-    disabled =false,
+    disabled = false,
     rounded = false,
     small,
     large,
@@ -28,7 +29,7 @@ const Button = ({
         ...passProps,
     };
 
-    if(disabled){
+    if (disabled) {
         delete props.onClick;
     }
 
@@ -49,7 +50,7 @@ const Button = ({
         rounded,
         small,
         large,
-        [className]: className
+        [className]: className,
     });
 
     return (
@@ -59,6 +60,24 @@ const Button = ({
             {RightIcon && <span className={cx('icon')}>{RightIcon}</span>}
         </Comp>
     );
+};
+
+Button.propTypes = {
+    // .node bất kì thằng nào có thể render được(span, div, component), ví dụ về thằng ko render được là : function
+    to: PropTypes.string,
+    href: PropTypes.string,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    text: PropTypes.bool,
+    disabled: PropTypes.bool,
+    rounded: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+    LeftIcon: PropTypes.string,
+    RightIcon: PropTypes.node,
+    className: PropTypes.node,
+    onClick: PropTypes.func,
 };
 
 export default Button;
