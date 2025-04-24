@@ -14,15 +14,15 @@ const cx = classNames.bind(styles);
 const Search = () => {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
     useEffect(() => {
         // loại bỏ khoảng trắng và ktr nếu searchValue ko có giá trị thì return
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -30,7 +30,7 @@ const Search = () => {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debounced);
+            const result = await searchServices.search(debouncedValue);
             setSearchResult(result);
 
             setLoading(false);
@@ -40,7 +40,7 @@ const Search = () => {
 
         // Khi người dùng nhập các ký tự đặc biệt như `&`,'=', `?` có thể khiến URL bị hiểu sai,
         // hàm encodeURIComponent sẽ mã hóa chúng thành các ký tự an toàn để sử dụng trong URL
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
