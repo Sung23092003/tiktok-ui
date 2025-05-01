@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import classNames from 'classnames/bind';
-import Header from '../components/Header';
+import Header from '~/layouts/components/Header';
+import SideBar from '~/layouts/components/SideBar';
 import styles from './DefaltLayout.module.scss'
-import SideBar from './SideBar';
 
 const cx = classNames.bind(styles)
 
